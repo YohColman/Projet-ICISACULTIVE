@@ -4,6 +4,7 @@ public class Panier {
 
     private Integer id;
     private String typepanier;
+    private String image;
 
     public Panier(Integer id, String type){
         this.id=id;

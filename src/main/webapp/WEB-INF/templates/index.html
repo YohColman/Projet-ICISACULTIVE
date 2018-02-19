@@ -1,5 +1,4 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <title>Association IcISAcultive</title>
@@ -45,7 +44,7 @@
 	<span class="icon-bar"></span>
 </a>
   <div class="navbar-inner">
-    <a class="brand" href="index.html"><img src="../../themes/images/icISAcultive.png" alt="icisacultive"/></a>
+    <a class="brand" href="accueil"><img src="../../themes/images/IcISAcultive.png" alt="icisacultive"/></a>
 		
     <ul id="topMenu" class="nav pull-right">
 	 <li class=""><a href="contact.html">Contact</a></li>
@@ -232,18 +231,20 @@
 					</div>
 				  </div>
 				</li>
+
 				ARTICLE INDIVIDUEL -->
-				<li class="span3">
+				<li th:each="panier : ${listPanier}" class="span3">
 				  <div class="thumbnail">
 					<a href="product_details.html"><img src="../../themes/images/products/b2.jpg" alt=""></a>
 					<div class="caption">
-					  <h5>Petits paniers</h5>
+					  <h5 th:text="${panier.typepanier}">Type panier</h5>
 					  <h4><a class="btn" href="product_details.html">DETAILS</a></h4>
 					</div>
 				  </div>
 				</li>
 			  </ul>
 			  </div>
+
 			  <!-- <div class="item">
 			  <ul class="thumbnails">
 				<li class="span3">
@@ -473,9 +474,7 @@
 			 </div>
 			<div id="socialMedia" class="span3 pull-right">
 				<h5>RESEAUX SOCIAUX </h5>
-				<a href="#"><img width="60" height="60" src="themes/images/facebook.png" title="facebook" alt="facebook"/></a>
-				<a href="#"><img width="60" height="60" src="themes/images/twitter.png" title="twitter" alt="twitter"/></a>
-				<a href="#"><img width="60" height="60" src="themes/images/youtube.png" title="youtube" alt="youtube"/></a>
+				<a href="https://www.facebook.com/Icisa-Cultive-980541831996285/"><img width="60" height="60" src="../../themes/images/facebook.png" title="facebook" alt="facebook"/></a>
 			 </div> 
 		 </div>
 	</div><!-- Container End -->
