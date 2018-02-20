@@ -18,6 +18,7 @@ public class AccueilServlet extends GenericServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         WebContext context = new WebContext(req, resp, req.getServletContext());
+
         List<Panier> listPanier = PanierLibrary.getInstance().listPanier();
         context.setVariable("listPanier", listPanier);
 
