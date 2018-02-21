@@ -44,7 +44,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
         Utilisateur utilisateur = null;
         try {
             Connection connection = DataSourceProvider.getDataSource().getConnection();
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM utilisateur WHERE email=?");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM utilisateur WHERE mail=?");
             stmt.setString(1, identifiant);
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
@@ -72,7 +72,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
         String motDePasse = null;
         try {
             Connection connection = DataSourceProvider.getDataSource().getConnection();
-            PreparedStatement stmt = connection.prepareStatement("SELECT motdepasse FROM utilisateur WHERE email=?");
+            PreparedStatement stmt = connection.prepareStatement("SELECT motdepasse FROM utilisateur WHERE mail=?");
             stmt.setString(1, identifiant);
             ResultSet results = stmt.executeQuery();
             if (results.next()) {

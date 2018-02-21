@@ -32,13 +32,13 @@ public class UtilisateurLibrary {
 
     public boolean validerMotDePasse(String email, String motDePasseAVerifier){
         boolean verif = false;
+        String motDePasse = utilisateurDao.getMotDePasseUtilisateur(email);
         if (email == null || "".equals(email)) {
             throw new IllegalArgumentException("L'identifiant doit être renseigné.");
         }
         if (motDePasseAVerifier == null || "".equals(motDePasseAVerifier)) {
             throw new IllegalArgumentException("Le mot de passe doit être renseigné.");
         }
-        String motDePasse = utilisateurDao.getMotDePasseUtilisateur(email);
         if (motDePasse == null) {
             throw new IllegalArgumentException("L'identifiant n'est pas connu.");
         }

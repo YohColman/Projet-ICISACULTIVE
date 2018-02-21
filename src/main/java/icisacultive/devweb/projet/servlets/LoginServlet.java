@@ -25,14 +25,19 @@ public class LoginServlet extends GenericServlet{
         String identifiant = request.getParameter("inputEmail1");
         String motDePasse = request.getParameter("inputPassword1");
         try{
+            System.out.println("Récupération du formulaire -- identifiant : "+identifiant+" - mdp : "+motDePasse);
             if (UtilisateurLibrary.getInstance().validerMotDePasse(identifiant, motDePasse)) {
+                System.out.println("Entrée dans le IF de LOGINSERVLET");
                 request.getSession().setAttribute("utilisateur", UtilisateurLibrary.getInstance().getUtilisateur(identifiant));
+                response.sendRedirect("login");
+                System.out.println("Utilisateur mis en session");
             }
+            System.out.println("Sortie du IF de LOGINSERVLET");
         }
         catch (IllegalArgumentException e) {
-
+            System.out.println("TRY raté de LOGINSERVLET");
+            response.sendRedirect("accueil");
         }
-        response.sendRedirect("accueil");
     }
 }
 
