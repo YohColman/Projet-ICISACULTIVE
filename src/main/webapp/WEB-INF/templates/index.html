@@ -34,7 +34,7 @@
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
-	<div class="span6">Bienvenue !<strong> User </strong></div>
+	<div class="span6">Bienvenue !<strong th:if="${utilisateur}!=null" th:text="' '+${utilisateur.prenom}"> User </strong></div>
 </div>
 <!-- Navbar ================================================== -->
 <div id="logoArea" class="navbar">
@@ -51,7 +51,7 @@
 	 <li class=""><a href="">Gestion</a></li>
 	 <li class=""><a href="profil.html">Mon profil</a></li>
 	 <li class="">
-	 <a href="login" style="padding-right:0"><span class="btn btn-large btn-success">Connexion</span></a>
+	 <a th:if="${utilisateur}==null" href="login" style="padding-right:0"><span class="btn btn-large btn-success">Connexion</span></a>
 	</li>
     </ul>
   </div>
