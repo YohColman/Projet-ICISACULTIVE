@@ -49,5 +49,25 @@ public class UtilisateurLibrary {
         return verif;
     }
 
+    public boolean validationChampsFormulaireAjout(String nom, String prenom, String mail, String motDePasse, String confirmationMotDePasse){
+        Boolean valide = false;
+        List<Utilisateur> lstUtilisateur = this.listerUtilisateurs();
+        for (Utilisateur u : lstUtilisateur){
+            if(u.getMail().equals(mail)){
+                return valide;
+            }
+        }
+        if (motDePasse.equals(confirmationMotDePasse) && prenom!=null && !prenom.equals("") && nom!=null && !nom.equals("") &&
+                mail!=null && !mail.equals("") && motDePasse!=null && !motDePasse.equals("") && confirmationMotDePasse!=null &&
+                !confirmationMotDePasse.equals("")){
+            valide = true;
+        }
+        return valide;
+    }
+
+    public void ajouterUtilisateur(String nom, String prenom, Integer telephone, String mail, String motDePasse){
+        this.utilisateurDao.addUtilisateur(nom, prenom, telephone, mail, motDePasse);
+    }
+
 
 }

@@ -52,6 +52,7 @@
 	 <li class=""><a href="profil.html">Mon profil</a></li>
 	 <li class="">
 	 <a th:if="${utilisateur}==null" href="login" style="padding-right:0"><span class="btn btn-large btn-success">Connexion</span></a>
+		 <a th:if="${utilisateur}!=null" href="deconnexion" style="padding-right:0"><span class="btn btn-large btn-success">Déconnexion</span></a>
 	</li>
     </ul>
   </div>

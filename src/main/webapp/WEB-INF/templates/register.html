@@ -1,5 +1,4 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <title>Bootshop online Shopping cart</title>
@@ -180,51 +179,57 @@
 		<button type="button" class="close" data-dismiss="alert">×</button>
 		<strong>Lorem Ipsum is simply</strong> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 	 </div> -->
-	<form class="form-horizontal" >
+	<form class="form-horizontal" method="post" >
 		<h4>Vos informations personnelles</h4>
+		<h5 th:if="${messageErreur}!=null" th:text="${messageErreur.getMessage()}" style="color: red">Message d'erreur</h5>
 		<div class="control-group">
 		
-		
+		<!-- FORMULAIRE AJOUT UTILISATEUR  -->
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="inputFname1">Prénom <sup>*</sup></label>
 			<div class="controls">
-			  <input type="text" id="inputFname1" placeholder="Nom">
+			  <input type="text" id="inputFname1" name="prenom" placeholder="Prénom">
 			</div>
 		 </div>
 		 <div class="control-group">
 			<label class="control-label" for="inputLnam">Nom <sup>*</sup></label>
 			<div class="controls">
-			  <input type="text" id="inputLnam" placeholder="Nom">
+			  <input type="text" id="inputLnam" name="nom" placeholder="Nom">
 			</div>
 		 </div>
 		<div class="control-group">
 		<label class="control-label" for="input_email">Email <sup>*</sup></label>
 		<div class="controls">
-		  <input type="text" id="input_email" placeholder="Email">
+		  <input type="email" id="input_email" name="mail" placeholder="Email">
 		</div>
-	  </div>	  
-	<div class="control-group">
-		<label class="control-label" for="inputPassword1">Mot de passe <sup>*</sup></label>
-		<div class="controls">
-		  <input type="password" id="inputPassword1" placeholder="Mot de passe">
-		</div>
-	  </div>	  	
-        
+	  </div>
 		<div class="control-group">
 			<label class="control-label" for="mobile">Mobile Phone </label>
 			<div class="controls">
-			  <input type="text"  name="mobile" id="mobile" placeholder="Mobile Phone"/> 
+			  <input type="tel"  name="mobile" id="mobile" placeholder="Mobile Phone"/>
 			</div>
 		</div>
-		
-	<p><sup>*</sup>Required field	</p>
+		<div class="control-group">
+			<label class="control-label" for="inputPassword1">Mot de passe <sup>*</sup></label>
+			<div class="controls">
+				<input type="password" id="inputPassword1" name="mdp" placeholder="Mot de passe">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="inputPassword1">Confirmer mot de passe <sup>*</sup></label>
+			<div class="controls">
+				<input type="password" id="inputPassword2" name="confmdp" placeholder="Confirmation mot de passe">
+			</div>
+		</div>
+
+		<p><sup>*</sup>Champs obligatoire</p>
 	
 	<div class="control-group">
 			<div class="controls">
 				<input type="hidden" name="email_create" value="1">
 				<input type="hidden" name="is_new_customer" value="1">
-				<input class="btn btn-large btn-success" type="submit" value="Register" />
+				<input class="btn btn-large btn-success" type="submit" value="S'inscrire" />
 			</div>
 		</div>		
 	</form>

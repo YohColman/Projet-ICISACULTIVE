@@ -86,4 +86,21 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
         return motDePasse;
     }
+
+    @Override
+    public void addUtilisateur(String nom, String prenom, Integer telephone, String mail, String motDePasse) {
+        String query = "INSERT INTO utilisateur(nom, prenom, telephone, mail, motdepasse) VALUES(?, ?, ?, ?, ?)";
+        try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)){
+            statement.setString(1, nom);
+            statement.setString(2, prenom);
+            statement.setInt(3, telephone);
+            statement.setString(4, mail);
+            statement.setString(5, motDePasse);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("ADDUTILISATEUR UTILISATEURDAOIMPL Echec de l'ajout d'un nouvel utilisateur");
+            e.printStackTrace();
+        }
+    }
 }

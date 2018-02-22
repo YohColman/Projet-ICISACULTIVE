@@ -14,5 +14,7 @@ public interface UtilisateurDao {
 
     String getMotDePasseUtilisateur(String identifiant);
 
+    void addUtilisateur(String nom, String prenom, Integer telephone, String mail, String motDePasse);
+
 
 }

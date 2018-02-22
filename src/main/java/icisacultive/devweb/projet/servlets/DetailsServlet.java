@@ -29,4 +29,9 @@ public class DetailsServlet extends GenericServlet{
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         templateEngine.process("product_details", context, resp.getWriter());
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+    }
 }

@@ -1,8 +1,10 @@
 package icisacultive.devweb.projet.servlets;
 
+import icisacultive.devweb.projet.entities.MessageErreur;
 import icisacultive.devweb.projet.managers.UtilisateurLibrary;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+import sun.plugin2.message.Message;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +18,13 @@ public class LoginServlet extends GenericServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
+        MessageErreur messageErreur = (MessageErreur) req.getSession().getAttribute("messageErreur");
+        if (messageErreur != null) {
+            context.setVariable("messageErreur", messageErreur);
+        } else {
+            System.out.println("Aucun message d'erreur enregistré dans la session");
+        }
+
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         templateEngine.process("login", context, resp.getWriter());
     }
@@ -24,6 +33,7 @@ public class LoginServlet extends GenericServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String identifiant = request.getParameter("inputEmail1");
         String motDePasse = request.getParameter("inputPassword1");
+
         try{
             System.out.println("Récupération du formulaire -- identifiant : "+identifiant+" - mdp : "+motDePasse);
             if (UtilisateurLibrary.getInstance().validerMotDePasse(identifiant, motDePasse)) {
@@ -36,6 +46,8 @@ public class LoginServlet extends GenericServlet{
         }
         catch (IllegalArgumentException e) {
             System.out.println("TRY raté de LOGINSERVLET");
+            MessageErreur messageErreur = new MessageErreur("Les informations que vous avez entrées ne sont pas correctes");
+            request.getSession().setAttribute("messageErreur", messageErreur);
             response.sendRedirect("login");
         }
     }
