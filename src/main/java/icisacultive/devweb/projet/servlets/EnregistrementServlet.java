@@ -40,17 +40,13 @@ public class EnregistrementServlet extends GenericServlet {
         String motDePasse = req.getParameter("mdp");
         String confirmationMotDePasse = req.getParameter("confmdp");
 
-        try{
-            System.out.println("DOPOST ENREGISTREMENTSERVLET : prenom= "+prenom+" - nom= "+prenom+" - mail= "+mail+" - telephone=  - mot de passe = "+motDePasse+" - confirmation mdp = "+confirmationMotDePasse);
-            if (UtilisateurLibrary.getInstance().validationChampsFormulaireAjout(nom, prenom , mail , motDePasse, confirmationMotDePasse)) {
-                System.out.println("Entrée dans le IF de ENREGISTREMENTSERVLET");
-                UtilisateurLibrary.getInstance().ajouterUtilisateur(nom, prenom, 0000000000, mail, motDePasse );
-                resp.sendRedirect("login");
-            }
-            System.out.println("Sortie du IF de ENREGISTREMENTSERVLET");
-        }
-        catch (IllegalArgumentException e) {
-            e.printStackTrace();
+        System.out.println("DOPOST ENREGISTREMENTSERVLET : prenom= "+prenom+" - nom= "+prenom+" - mail= "+mail+" - telephone=  - mot de passe = "+motDePasse+" - confirmation mdp = "+confirmationMotDePasse);
+        if (UtilisateurLibrary.getInstance().validationChampsFormulaireAjout(nom, prenom , mail , motDePasse, confirmationMotDePasse)) {
+            System.out.println("Entrée dans le IF de ENREGISTREMENTSERVLET");
+            UtilisateurLibrary.getInstance().ajouterUtilisateur(nom, prenom, 0000000000, mail, motDePasse );
+            req.getSession().setAttribute("utilisateur", UtilisateurLibrary.getInstance().getUtilisateur(mail));
+            resp.sendRedirect("accueil");
+        } else {
             System.out.println("TRY raté de ENREGISTREMENTSERVLET");
             MessageErreur messageErreur = new MessageErreur("Les informations que vous avez entrées ne sont pas correctes");
             req.getSession().setAttribute("messageErreur", messageErreur);
