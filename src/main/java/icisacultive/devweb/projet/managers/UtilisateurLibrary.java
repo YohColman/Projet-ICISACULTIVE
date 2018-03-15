@@ -42,6 +42,9 @@ public class UtilisateurLibrary {
         if (motDePasse == null) {
             throw new IllegalArgumentException("L'identifiant n'est pas connu.");
         }
+        if (!motDePasse.equals(motDePasseAVerifier)){
+            throw new IllegalArgumentException("Le mot de passe n'est pas correct");
+        }
         if (motDePasse.equals(motDePasseAVerifier)){
             verif=true;
         }
