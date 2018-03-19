@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+//Commentaire juste pour commit
 @WebServlet("/detailslot")
 public class DetailsLotPanierServlet extends GenericServlet {
     @Override
