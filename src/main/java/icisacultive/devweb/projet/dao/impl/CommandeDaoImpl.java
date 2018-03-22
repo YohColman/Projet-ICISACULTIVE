@@ -36,7 +36,7 @@ public class CommandeDaoImpl implements CommandeDao{
     }
 
     @Override
-    public void paymentDone(String idCommande) {
+    public void paymentDone(Integer idCommande) {
 
         String query = "UPDATE commande SET paye='1' WHERE idcommande=?;";
         try {

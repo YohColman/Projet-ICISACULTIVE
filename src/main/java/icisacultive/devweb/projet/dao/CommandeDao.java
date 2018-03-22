@@ -8,4 +8,6 @@ public interface CommandeDao {
 
     public List<Commande> listCommandes();
 
+    public void paymentDone(Integer idCommande);
+
 }

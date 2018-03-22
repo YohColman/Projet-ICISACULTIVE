@@ -5,20 +5,18 @@ import java.util.Date;
 public class Commande {
     private Integer id;
     private Integer montant;
-    private String paye;
+    private Integer paye;
     private String nomClient;
     private String prenomClient;
     private Date date;
+
+    private Integer idUtilisateur;
 
 
     public Commande(Integer id, Integer montant, Integer paye, String nom, String prenom) {
         this.id = id;
         this.montant = montant;
-        if (paye==0) {
-            this.paye = "Commande non réglée";
-        }else if(paye==1){
-            this.paye = "Commande réglée ";
-        }
+        this.paye=paye;
         this.nomClient = nom;
         this.prenomClient=prenom;
     }
@@ -33,11 +31,11 @@ public class Commande {
 
 
 
-    public String getPaye() {
+    public Integer getPaye() {
         return paye;
     }
 
-    public void setPaye(String paye) {
+    public void setPaye(Integer paye) {
         this.paye = paye;
     }
 
@@ -52,6 +50,14 @@ public class Commande {
 
     public Date getDate() {
         return date;
+    }
+
+    public Integer getIdUtilisateur() {
+        return idUtilisateur;
+    }
+
+    public void setIdUtilisateur(Integer idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 
 
