@@ -6,12 +6,21 @@ public class LotPanier {
     private Integer prix;
     private Integer nombrePanier;
     private Integer idPanier;
+    private String typePanier;
 
     public LotPanier(Integer idLot, Integer prix, Integer nombrePanier, Integer idPanier) {
         this.idLot = idLot;
         this.prix = prix;
         this.nombrePanier = nombrePanier;
         this.idPanier = idPanier;
+    }
+
+    public LotPanier(Integer idLot, Integer prix, Integer nombrePanier, Integer idPanier, String typePanier) {
+        this.idLot = idLot;
+        this.prix = prix;
+        this.nombrePanier = nombrePanier;
+        this.idPanier = idPanier;
+        this.typePanier = typePanier;
     }
 
     public Integer getIdLot() {
@@ -44,5 +53,13 @@ public class LotPanier {
 
     public void setIdPanier(Integer idPanier) {
         this.idPanier = idPanier;
+    }
+
+    public String getTypePanier() {
+        return typePanier;
+    }
+
+    public void setTypePanier(String typePanier) {
+        this.typePanier = typePanier;
     }
 }

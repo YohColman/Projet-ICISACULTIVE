@@ -1,3 +1,7 @@
+/**
+ * Servlet gérant les détails des différents lots par format de panier
+ */
+
 package icisacultive.devweb.projet.servlets;
 
 import icisacultive.devweb.projet.entities.LotPanier;

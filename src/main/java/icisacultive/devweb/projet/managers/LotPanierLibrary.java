@@ -24,4 +24,8 @@ public class LotPanierLibrary {
     }
 
     public List<LotPanier> listLotPanierByIdPanier(Integer id){return lotPanierDao.listLotPanierByIdPanier(id);}
+
+    public LotPanier getLotPanierById(Integer id){return lotPanierDao.getLotPanierById(id);}
+
+    public Integer getMontantLotById(Integer id){return lotPanierDao.getMontantLotById(id);}
 }

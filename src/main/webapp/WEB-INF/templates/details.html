@@ -168,7 +168,7 @@
 				  <div class="control-group">
 					<label class="control-label"><span th:text="${lotpanier.prix}+'€'">$222.00</span></label>
 					<div class="controls">
-					  <a href="'detailslot?idLot='+${panier.id}"><button class="btn btn-large btn-primary pull-right" th:id="${lotpanier.idLot}"> Commander <i class=" icon-shopping-cart"></i></button></a>
+					  <a th:href="'detailslot?idLot='+ ${lotpanier.idLot}"><button class="btn btn-large btn-primary pull-right" th:id="${lotpanier.idLot}"> Détails <i class=" icon-shopping-cart"></i></button></a>
 					</div>
 				  </div>
 			</div>

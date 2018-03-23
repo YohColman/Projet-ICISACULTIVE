@@ -4,6 +4,7 @@ import icisacultive.devweb.projet.dao.CommandeDao;
 import icisacultive.devweb.projet.dao.impl.CommandeDaoImpl;
 import icisacultive.devweb.projet.entities.Commande;
 
+import java.sql.Date;
 import java.util.List;
 
 public class CommandeLibrary {
@@ -21,4 +22,6 @@ public class CommandeLibrary {
     }
 
     public List<Commande> listCommandes(){return commandeDao.listCommandes();}
+
+    public void ajouterCommande(Integer montant, Integer idUtilisateur, Integer idLot){this.commandeDao.passerCommande(montant,idUtilisateur,idLot);}
 }

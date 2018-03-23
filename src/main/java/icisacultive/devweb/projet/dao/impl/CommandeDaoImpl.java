@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,5 +50,19 @@ public class CommandeDaoImpl implements CommandeDao{
         }
 
 
+    }
+
+    @Override
+    public void passerCommande(Integer montant, Integer idUtilisateur,Integer idLot) {
+        String query = "INSERT INTO commande(montant, date, paye, idutilisateur, idlot) VALUES(?, now(), 0, ?, ?)";
+        try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)){
+            statement.setInt(1, montant);
+            statement.setInt(2, idUtilisateur);
+            statement.setInt(3, idLot);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

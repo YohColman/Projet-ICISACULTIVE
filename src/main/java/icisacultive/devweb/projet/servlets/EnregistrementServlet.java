@@ -44,6 +44,8 @@ public class EnregistrementServlet extends GenericServlet {
         if (UtilisateurLibrary.getInstance().validationChampsFormulaireAjout(nom, prenom , mail , motDePasse, confirmationMotDePasse)) {
             System.out.println("Entrée dans le IF de ENREGISTREMENTSERVLET");
             UtilisateurLibrary.getInstance().ajouterUtilisateur(nom, prenom, 0000000000, mail, motDePasse );
+            MessageErreur messageErreur = new MessageErreur("");
+            req.getSession().setAttribute("messageErreur", messageErreur);
             req.getSession().setAttribute("utilisateur", UtilisateurLibrary.getInstance().getUtilisateur(mail));
             resp.sendRedirect("accueil");
         } else {
