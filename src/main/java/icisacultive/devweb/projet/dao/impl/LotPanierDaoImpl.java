@@ -1,3 +1,7 @@
+/**
+ * Dao gérant les lots de paniers
+ */
+
 package icisacultive.devweb.projet.dao.impl;
 
 import icisacultive.devweb.projet.dao.LotPanierDao;

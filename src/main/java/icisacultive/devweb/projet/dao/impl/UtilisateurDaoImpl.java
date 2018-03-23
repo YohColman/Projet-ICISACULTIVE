@@ -1,3 +1,7 @@
+/**
+ * Dao gérant les utilisateurs
+ */
+
 package icisacultive.devweb.projet.dao.impl;
 
 import icisacultive.devweb.projet.dao.UtilisateurDao;

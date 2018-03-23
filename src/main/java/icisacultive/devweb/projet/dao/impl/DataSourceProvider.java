@@ -1,3 +1,7 @@
+/**
+ * Classe indiquant la source pour la BDD
+ */
+
 package icisacultive.devweb.projet.dao.impl;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;

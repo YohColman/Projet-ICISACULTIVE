@@ -1,3 +1,7 @@
+/**
+ * Dao gérant les paniers (petit format, ...)
+ */
+
 package icisacultive.devweb.projet.dao.impl;
 
 import icisacultive.devweb.projet.dao.PanierDao;
