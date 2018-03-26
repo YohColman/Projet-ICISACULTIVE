@@ -5,17 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!--Less styles -->
-    <!-- Other Less css file //different less files has different color scheam
-     <link rel="stylesheet/less" type="text/css" href="themes/less/simplex.less">
-     <link rel="stylesheet/less" type="text/css" href="themes/less/classified.less">
-     <link rel="stylesheet/less" type="text/css" href="themes/less/amelia.less">  MOVE DOWN TO activate
-     -->
-    <!--<link rel="stylesheet/less" type="text/css" href="themes/less/bootshop.less">
-    <script src="themes/js/less.js" type="text/javascript"></script> -->
 
-    <!-- Styles menu administrateur -->
+
+    <!-- Styles personnalisés -->
     <link href="../../themes/css/menuAdmin.css" rel="stylesheet"/>
+    <link href="../../themes/css/listeCommandes.css" rel="stylesheet"/>
     <!-- Bootstrap style -->
     <link id="callCss" rel="stylesheet" href="../../themes/bootshop/bootstrap.min.css" media="screen"/>
     <link href="../../themes/css/base.css" rel="stylesheet" media="screen"/>
@@ -84,82 +78,31 @@
         </div>
     </div>
 </div>
-<!-- Header End====================================================================== -->
-<!--<div id="carouselBlk">
-	<div id="myCarousel" class="carousel slide">
-		<div class="carousel-inner">
-		  <div class="item active">
-		  <div class="container">
-			<a href="register.html"><img style="width:100%" src="themes/images/carousel/1.png" alt="special offers"/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				</div>
-		  </div>
-		  </div>
-		  <div class="item">
-		  <div class="container">
-			<a href="register.html"><img style="width:100%" src="themes/images/carousel/2.png" alt=""/></a>
-				<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				</div>
-		  </div>
-		  </div>
-		  <div class="item">
-		  <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/3.png" alt=""/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				</div>
 
-		  </div>
-		  </div>
-		   <div class="item">
-		   <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/4.png" alt=""/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				</div>
-
-		  </div>
-		  </div>
-		   <div class="item">
-		   <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/5.png" alt=""/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-			</div>
-		  </div>
-		  </div>
-		   <div class="item">
-		   <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/6.png" alt=""/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				</div>
-		  </div>
-		  </div>
-		</div>
-		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-	  </div>
-</div> -->
 <div id="mainBody">
     <div class="container">
-    <ul>
-        <li th:each="commande : ${listCommandes}">
+    <ul id="contListOrders">
+        <li class="lineListOrders" th:each="commande : ${listCommandes}">
             <div class="thumbnail">
                 <div class="caption">
-                    <h5 th:text="${commande.nomClient}">Nom du client</h5>
-                    <h5 th:text="${commande.prenomClient}">Prénom du client</h5>
-                    <h5 th:text="${commande.paye}">Statut paiement commande</h5>
-                    <h5 th:text="${commande.montant}">Montant commande</h5>
+                    <span>Nom du client : </span>
+                    <p th:text="${commande.nomClient}"></p>
+                    <span>Prénom du client : </span>
+                    <p th:text="${commande.prenomClient}">P</p>
+                    <span>Montant de la commande : </span>
+                    <p th:text="${commande.montant}"></p>
+                    <span>Paiement effectué : </span>
+                    <div th:switch="${commande.paye}">
+                        <div th:case="0">
+                            <p>Commande non payée</p>
+                            <a th:href="'confirmePaiement?idcommande='+${commande.id}">Changer le statut de cette commande</a>
+                        </div>
+                        <p th:case="1">Commande payée</p>
+                    </div>
+
                 </div>
+                
+
             </div>
         </li>
     </ul>
