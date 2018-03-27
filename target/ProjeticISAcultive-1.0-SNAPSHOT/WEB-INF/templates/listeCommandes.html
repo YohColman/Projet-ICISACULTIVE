@@ -92,7 +92,7 @@
                     <span>Montant de la commande : </span>
                     <p th:text="${commande.montant}"></p>
                     <span>Paiement effectué : </span>
-                    <div th:switch=${commande.paye}>
+                    <div th:switch="${commande.paye}">
                         <div th:case="0">
                             <p>Commande non payée</p>
                             <a th:href="'confirmePaiement?idcommande='+${commande.id}">Changer le statut de cette commande</a>
