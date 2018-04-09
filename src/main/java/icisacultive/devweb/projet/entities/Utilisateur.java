@@ -75,4 +75,12 @@ public class Utilisateur {
     public void setAdmin(Integer admin) {
         this.admin = admin;
     }
+
+    public boolean isAdmin() {
+        if (this.admin == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

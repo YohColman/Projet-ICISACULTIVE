@@ -1,5 +1,6 @@
 package icisacultive.devweb.projet.servlets;
 
+import icisacultive.devweb.projet.entities.Utilisateur;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -13,9 +14,18 @@ import java.io.IOException;
 public class PageAdminServlet extends GenericServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        WebContext context = new WebContext(req, resp, req.getServletContext());
 
-        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-        templateEngine.process("page_admin", context, resp.getWriter());
+        Utilisateur utilisateur = (Utilisateur) req.getSession().getAttribute("utilisateur");
+
+        if (utilisateur!=null){
+            if (utilisateur.isAdmin()){
+                WebContext context = new WebContext(req, resp, req.getServletContext());
+
+                TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+                templateEngine.process("page_admin", context, resp.getWriter());;
+            }
+        } else {
+            resp.sendRedirect("accueil");
+        };
     }
 }
