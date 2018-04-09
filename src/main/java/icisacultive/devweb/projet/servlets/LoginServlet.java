@@ -4,7 +4,6 @@ import icisacultive.devweb.projet.entities.MessageErreur;
 import icisacultive.devweb.projet.managers.UtilisateurLibrary;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
-import sun.plugin2.message.Message;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
