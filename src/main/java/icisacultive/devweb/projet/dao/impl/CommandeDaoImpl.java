@@ -31,7 +31,7 @@ public class CommandeDaoImpl implements CommandeDao{
                 ResultSet resultSet = statement.executeQuery(query);
         ) {
             while (resultSet.next()) {
-                listOfCommandes.add(new Commande(resultSet.getInt("idcommande"), resultSet.getInt("montant"), resultSet.getInt("paye"), resultSet.getString("nom"), resultSet.getString("prenom")));
+                listOfCommandes.add(new Commande(resultSet.getInt("idcommande"), resultSet.getInt("montant"), resultSet.getInt("paye"), resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getDate("date")));
             }
 
         } catch (SQLException e) {

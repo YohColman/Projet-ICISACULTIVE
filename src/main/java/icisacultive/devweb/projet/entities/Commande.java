@@ -21,6 +21,15 @@ public class Commande {
         this.prenomClient=prenom;
     }
 
+    public Commande(Integer id, Integer montant, Integer paye, String nom, String prenom, Date date) {
+        this.id = id;
+        this.montant = montant;
+        this.paye=paye;
+        this.nomClient = nom;
+        this.prenomClient=prenom;
+        this.date=date;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -26,6 +26,8 @@
                     <p th:text="${commande.prenomClient}">P</p>
                     <span>Montant de la commande : </span>
                     <p th:text="${commande.montant}"></p>
+                    <span>Date de la commande : </span>
+                    <p th:text="${commande.date}"></p>
                     <span>Paiement effectué : </span>
                     <div th:switch="${commande.paye}">
                         <div th:case="0">
