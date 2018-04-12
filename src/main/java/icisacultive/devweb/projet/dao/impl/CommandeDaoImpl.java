@@ -23,7 +23,7 @@ public class CommandeDaoImpl implements CommandeDao{
     @Override
     public List<Commande> listCommandes() {
 
-        String query = "SELECT commande.idcommande, commande.montant, commande.paye, commande.date, utilisateur.nom, utilisateur.prenom FROM commande INNER JOIN utilisateur ON commande.idutilisateur = utilisateur.idutilisateur ";
+        String query = "SELECT commande.idcommande, commande.montant, commande.paye, commande.date, utilisateur.nom, utilisateur.prenom FROM commande INNER JOIN utilisateur ON commande.idutilisateur = utilisateur.idutilisateur ORDER BY commande.date DESC";
         List<Commande> listOfCommandes = new ArrayList<>();
         try (
                 Connection connection = icisacultive.devweb.projet.dao.impl.DataSourceProvider.getDataSource().getConnection();

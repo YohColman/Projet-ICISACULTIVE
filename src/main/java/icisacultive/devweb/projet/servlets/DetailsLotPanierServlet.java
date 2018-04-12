@@ -8,6 +8,7 @@ import icisacultive.devweb.projet.entities.LotPanier;
 import icisacultive.devweb.projet.entities.MessageErreur;
 import icisacultive.devweb.projet.entities.Utilisateur;
 import icisacultive.devweb.projet.managers.CommandeLibrary;
+import icisacultive.devweb.projet.managers.LigneDeCommandeLibrary;
 import icisacultive.devweb.projet.managers.LotPanierLibrary;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;

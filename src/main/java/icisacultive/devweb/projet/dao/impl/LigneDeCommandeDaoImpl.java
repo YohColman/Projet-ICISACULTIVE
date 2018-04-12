@@ -3,10 +3,7 @@ package icisacultive.devweb.projet.dao.impl;
 import icisacultive.devweb.projet.dao.LigneDeCommandeDao;
 import icisacultive.devweb.projet.entities.LigneDeCommande;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +29,35 @@ public class LigneDeCommandeDaoImpl implements LigneDeCommandeDao {
 
     @Override
     public LigneDeCommandeDao getLigneDeCommande(Integer id) {
+        return null;
+    }
+
+    @Override
+    public void ajouterLigneDeCommande(Integer idCommande) {
+        String query = "INSERT INTO lignedecommande(idcommande) VALUES(?)";
+        try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)){
+            statement.setInt(1, idCommande);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Integer getNombreDePanierCommande(Integer idCommande) {
+        String query = "SELECT * FROM commande INNER JOIN lot ON lot.idlot=commande.idlot INNER JOIN panier ON lot.idpanier=panier.idpanier WHERE commande.idcommande=?";
+        try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)){
+            statement.setInt(1, idCommande);
+            try(ResultSet resultSet = statement.executeQuery()){
+                if (resultSet.next()){
+                    return resultSet.getInt("nombrepanier");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

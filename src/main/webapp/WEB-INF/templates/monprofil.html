@@ -31,9 +31,12 @@
                         <span>Paiement effectué : </span>
                         <div th:switch="${commande.paye}">
                             <div th:case="0">
-                                <p>Commande non payée</p>
+                                <p style="color: red">Commande non payée</p>
                             </div>
-                            <p th:case="1">Commande payée</p>
+                            <div th:case="1">
+                                <p style="color: green">Commande payée</p>
+                                <a style="right: 0%" href="accueil">Choisir des dates de réception pour chaque panier</a>
+                            </div>
                         </div>
 
                     </div>

@@ -3,6 +3,7 @@ package icisacultive.devweb.projet.servlets;
 
 
 import icisacultive.devweb.projet.managers.CommandeLibrary;
+import icisacultive.devweb.projet.managers.LigneDeCommandeLibrary;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -29,6 +30,10 @@ public class ConfirmePaiementServlet extends GenericServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer idCommande = Integer.valueOf(req.getParameter("idcommande"));
         CommandeLibrary.getInstance().paymentDone(idCommande);
+        Integer nbrePaniers = LigneDeCommandeLibrary.getInstance().getNombreDePaniersCommande(idCommande);
+        for (int i = 0; i<nbrePaniers; i++){
+            LigneDeCommandeLibrary.getInstance().ajouterLigneDeCommande(idCommande);
+        }
         resp.sendRedirect("listesCommandes");
     }
 }
