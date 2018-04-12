@@ -34,7 +34,6 @@ public class LoginServlet extends GenericServlet{
         String motDePasse = request.getParameter("inputPassword1");
 
         try{
-            System.out.println("Récupération du formulaire -- identifiant : "+identifiant+" - mdp : "+motDePasse);
             if (UtilisateurLibrary.getInstance().validerMotDePasse(identifiant, motDePasse)) {
                 System.out.println("Entrée dans le IF de LOGINSERVLET");
                 request.getSession().setAttribute("utilisateur", UtilisateurLibrary.getInstance().getUtilisateur(identifiant));

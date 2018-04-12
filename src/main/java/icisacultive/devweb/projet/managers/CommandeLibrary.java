@@ -23,6 +23,8 @@ public class CommandeLibrary {
 
     public List<Commande> listCommandes(){return commandeDao.listCommandes();}
 
+    public List<Commande> listCommandeByUser(Integer idUser){return commandeDao.listCommandesByUser(idUser);}
+
     public void ajouterCommande(Integer montant, Integer idUtilisateur, Integer idLot){this.commandeDao.passerCommande(montant,idUtilisateur,idLot);}
 
     public void paymentDone(Integer idCommande){commandeDao.paymentDone(idCommande);}

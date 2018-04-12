@@ -42,6 +42,29 @@ public class CommandeDaoImpl implements CommandeDao{
     }
 
     @Override
+    public List<Commande> listCommandesByUser(Integer idUser) {
+        String query = "SELECT * FROM commande INNER JOIN lot ON commande.idlot=lot.idlot INNER JOIN panier ON lot.idpanier=panier.idpanier WHERE idutilisateur=? ORDER BY date DESC";
+        List<Commande> lstCommandeByUser = new ArrayList<>();
+
+        try (
+                Connection connection = DataSourceProvider.getDataSource().getConnection();
+                PreparedStatement statement = connection.prepareStatement(query);
+        ){
+            statement.setInt(1, idUser);
+            try (ResultSet resultSet = statement.executeQuery()){
+                while (resultSet.next()){
+                    lstCommandeByUser.add(new Commande(resultSet.getInt("idcommande"), resultSet.getInt("montant"),resultSet.getInt("paye")
+                            ,resultSet.getDate("date"), resultSet.getString("typepanier"), resultSet.getInt("nombrepanier")));
+                }
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lstCommandeByUser;
+    }
+
+    @Override
     public void paymentDone(Integer idCommande) {
 
         System.out.println("ref");

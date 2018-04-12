@@ -27,8 +27,9 @@
 <!-- MainBody ================================= -->
 <div id="mainBody">
     <div class="container">
+
         <form method="post">
-            <p>Choisissez une date pour une prochaine séance de distribution.</p>
+            <h3>Choisissez une date pour une prochaine séance de distribution.</h3>
             <div class="control-group">
                 <div class="controls">
                     <input type="date" id="dateSeance" name="dateSeance">
@@ -38,6 +39,9 @@
                 </div>
             </div>
         </form>
+
+        <h3>Séances existantes :</h3>
+        <ul><li th:each="seance : ${listSeanceDistribution}"><p th:text="${seance.dateSeance}"></p></li></ul>
     </div>
 </div>
 <!-- MainBody End ============================= -->

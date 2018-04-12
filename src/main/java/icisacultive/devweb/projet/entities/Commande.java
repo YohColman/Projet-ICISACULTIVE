@@ -9,8 +9,26 @@ public class Commande {
     private String nomClient;
     private String prenomClient;
     private Date date;
+    private String typePanier;
+    private Integer nombrePanier;
 
     private Integer idUtilisateur;
+
+    public Commande(Integer id, Integer montant, Integer paye, Date date) {
+        this.id = id;
+        this.montant = montant;
+        this.paye=paye;
+        this.date=date;
+    }
+
+    public Commande(Integer id, Integer montant, Integer paye, Date date, String type, Integer nombre) {
+        this.id = id;
+        this.montant = montant;
+        this.paye=paye;
+        this.date=date;
+        this.typePanier=type;
+        this.nombrePanier=nombre;
+    }
 
 
     public Commande(Integer id, Integer montant, Integer paye, String nom, String prenom) {
@@ -28,6 +46,22 @@ public class Commande {
         this.nomClient = nom;
         this.prenomClient=prenom;
         this.date=date;
+    }
+
+    public String getTypePanier() {
+        return typePanier;
+    }
+
+    public void setTypePanier(String typePanier) {
+        this.typePanier = typePanier;
+    }
+
+    public Integer getNombrePanier() {
+        return nombrePanier;
+    }
+
+    public void setNombrePanier(Integer nombrePanier) {
+        this.nombrePanier = nombrePanier;
     }
 
     public Integer getId() {
