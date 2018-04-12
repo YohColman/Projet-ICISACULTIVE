@@ -82,4 +82,17 @@ public class LigneDeCommandeDaoImpl implements LigneDeCommandeDao {
         }
         return null;
     }
+
+    @Override
+    public void choisirDateLigneDeCommande(Integer idLigneDeCommande, String date) {
+        String query = "UPDATE lignedecommande SET date="+date+" WHERE idlignedecommande=?;";
+        try(Connection connection = icisacultive.devweb.projet.dao.impl.DataSourceProvider.getDataSource().getConnection();
+            java.sql.PreparedStatement stmt = connection.prepareStatement(query)){
+
+            stmt.setInt(1, idLigneDeCommande);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

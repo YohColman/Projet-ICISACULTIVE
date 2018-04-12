@@ -14,4 +14,6 @@ public interface LigneDeCommandeDao {
     public void ajouterLigneDeCommande(Integer idCommande);
 
     public Integer getNombreDePanierCommande(Integer idCommande);
+
+    public void choisirDateLigneDeCommande(Integer idLigneDeCommande, String date);
 }

@@ -19,21 +19,19 @@
         <div class="row">
 
             <div class="span9">
-                <h3>Paniers concernant cette commande :</h3>
-                <div th:each="ligneDeCommande : ${lstLigneDeCommande}" class="span6">
-                    <h4 th:text="'Format du panier: '+${ligneDeCommande.typePanier}">Allo</h4>
-                    <hr class="soft"/>
-                    <div class="control-group">
-                        <label class="control-label"><span th:if="${ligneDeCommande.date}==null">Pas de date sélectionnée : <a th:href="'choixDate?idlignedecommande='+${ligneDeCommande.idLigneDeCommande}"><b>Choisir une date</b></a></span></label>
-                        <label class="control-label"><span th:if="${ligneDeCommande.date}!=null" th:text="${ligneDeCommande.date}">Date</span></label>
-                        <label th:if="${ligneDeCommande.receptionne}==0" class="control-label"><span style="color: red">Non réceptionné</span></label>
-                        <label th:if="${ligneDeCommande.receptionne}==1" class="control-label"><span style="color: green">Réceptionné</span></label>
-                    </div>
+                <h3>Choix d'une date :</h3>
+                <!-- <div th:each="seance : ${lstSeancesDistrib}">
+                    <p th:text="${seance.dateSeance}"></p>
+                </div> -->
+                <form method="post">
+                    <input type="radio" name="date" value="2018-04-18">2018-04-18<br>
+                    <input type="radio" name="date" value="2018-04-10">2018-04-10<br>
+                    <input type="submit">
+                </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <!-- Footer ================================================================== -->
 <div  id="footerSection" th:insert="~{fragments::footer}">
     <!-- Container End -->
