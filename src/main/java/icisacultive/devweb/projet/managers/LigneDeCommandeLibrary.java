@@ -2,6 +2,9 @@ package icisacultive.devweb.projet.managers;
 
 import icisacultive.devweb.projet.dao.LigneDeCommandeDao;
 import icisacultive.devweb.projet.dao.impl.LigneDeCommandeDaoImpl;
+import icisacultive.devweb.projet.entities.LigneDeCommande;
+
+import java.util.List;
 
 public class LigneDeCommandeLibrary {
 
@@ -16,6 +19,8 @@ public class LigneDeCommandeLibrary {
     private LigneDeCommandeLibrary(){
 
     }
+
+    public List<LigneDeCommande> listLigneDeCommandeByCommandeByUser(Integer idCommande){return this.ligneDeCommandeDao.listLigneDeCommandeByUser(idCommande);}
 
     public Integer getNombreDePaniersCommande(Integer idCommande){return this.ligneDeCommandeDao.getNombreDePanierCommande(idCommande);}
 

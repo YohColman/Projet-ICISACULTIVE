@@ -30,13 +30,8 @@
                         <p th:text="${commande.date}"></p>
                         <span>Paiement effectué : </span>
                         <div th:switch="${commande.paye}">
-                            <div th:case="0">
-                                <p style="color: red">Commande non payée</p>
-                            </div>
-                            <div th:case="1">
-                                <p style="color: green">Commande payée</p>
-                                <a style="right: 0%" href="accueil">Choisir des dates de réception pour chaque panier</a>
-                            </div>
+                            <p th:case="0" style="color: red">Commande non payée</p>
+                            <p th:case="1" style="color: green">Commande payée : <a th:href="'monProfilDates?idcommande='+${commande.id}">Choisir des dates de réception pour chaque panier</a></p>
                         </div>
 
                     </div>

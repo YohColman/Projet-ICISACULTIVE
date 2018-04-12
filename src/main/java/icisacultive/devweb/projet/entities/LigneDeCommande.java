@@ -8,12 +8,29 @@ public class LigneDeCommande {
     private Integer receptionne;
     private Integer idCommande;
     private Date date;
+    private String typePanier;
 
     public LigneDeCommande(Integer idLigneDeCommande, Integer receptionne, Integer idCommande, Date date) {
         this.idLigneDeCommande = idLigneDeCommande;
         this.receptionne = receptionne;
         this.idCommande = idCommande;
         this.date = date;
+    }
+
+    public LigneDeCommande(Integer idLigneDeCommande, Integer receptionne, Integer idCommande, Date date, String type) {
+        this.idLigneDeCommande = idLigneDeCommande;
+        this.receptionne = receptionne;
+        this.idCommande = idCommande;
+        this.date = date;
+        this.typePanier=type;
+    }
+
+    public String getTypePanier() {
+        return typePanier;
+    }
+
+    public void setTypePanier(String typePanier) {
+        this.typePanier = typePanier;
     }
 
     public Integer getIdLigneDeCommande() {

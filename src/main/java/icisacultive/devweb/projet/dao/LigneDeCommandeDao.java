@@ -7,6 +7,8 @@ import java.util.List;
 public interface LigneDeCommandeDao {
     public List<LigneDeCommande> listLigneDeCommande();
 
+    public List<LigneDeCommande> listLigneDeCommandeByUser(Integer idCommande);
+
     public LigneDeCommandeDao getLigneDeCommande(Integer id);
 
     public void ajouterLigneDeCommande(Integer idCommande);

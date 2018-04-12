@@ -31,10 +31,10 @@
                     <span>Paiement effectué : </span>
                     <div th:switch="${commande.paye}">
                         <div th:case="0">
-                            <p>Commande non payée</p>
+                            <p style="color: red">Commande non payée</p>
                             <a th:href="'confirmePaiement?idcommande='+${commande.id}">Changer le statut de cette commande</a>
                         </div>
-                        <p th:case="1">Commande payée</p>
+                        <p th:case="1" style="color: green">Commande payée</p>
                     </div>
 
                 </div>

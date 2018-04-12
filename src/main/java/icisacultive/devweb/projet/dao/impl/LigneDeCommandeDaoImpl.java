@@ -28,6 +28,28 @@ public class LigneDeCommandeDaoImpl implements LigneDeCommandeDao {
     }
 
     @Override
+    public List<LigneDeCommande> listLigneDeCommandeByUser(Integer idCommande) {
+        String query = "SELECT * FROM lignedecommande INNER JOIN commande ON lignedecommande.idcommande=commande.idcommande INNER JOIN lot ON lot.idlot=commande.idlot INNER JOIN panier ON panier.idpanier=lot.idpanier WHERE commande.idcommande=?";
+        List<LigneDeCommande> lstLigneDeCommandeByUserByCommande = new ArrayList<>();
+
+        try (
+                Connection connection = DataSourceProvider.getDataSource().getConnection();
+                PreparedStatement statement = connection.prepareStatement(query);
+        ){
+            statement.setInt(1, idCommande);
+            try (ResultSet resultSet = statement.executeQuery()){
+                while (resultSet.next()){
+                    lstLigneDeCommandeByUserByCommande.add(new LigneDeCommande(resultSet.getInt("idlignedecommande"), resultSet.getInt("receptionne"), resultSet.getInt("idcommande"), resultSet.getDate("date"), resultSet.getString("typepanier")));
+                }
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lstLigneDeCommandeByUserByCommande;
+    }
+
+    @Override
     public LigneDeCommandeDao getLigneDeCommande(Integer id) {
         return null;
     }
