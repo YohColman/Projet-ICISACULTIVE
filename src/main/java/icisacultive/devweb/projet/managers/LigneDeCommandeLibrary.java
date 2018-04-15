@@ -22,7 +22,11 @@ public class LigneDeCommandeLibrary {
 
     public List<LigneDeCommande> listLigneDeCommandeByCommandeByUser(Integer idCommande){return this.ligneDeCommandeDao.listLigneDeCommandeByUser(idCommande);}
 
+    public List<LigneDeCommande> listLigneDeCommandeByDate(String date){return this.ligneDeCommandeDao.listLigneDeCommandeByDate(date);}
+
     public Integer getNombreDePaniersCommande(Integer idCommande){return this.ligneDeCommandeDao.getNombreDePanierCommande(idCommande);}
 
     public void ajouterLigneDeCommande(Integer idCommande){this.ligneDeCommandeDao.ajouterLigneDeCommande(idCommande);}
+
+    public void choixDateLigneDeCommande(Integer idLigneDeCommande, String date){this.ligneDeCommandeDao.choisirDateLigneDeCommande(idLigneDeCommande, date);}
 }

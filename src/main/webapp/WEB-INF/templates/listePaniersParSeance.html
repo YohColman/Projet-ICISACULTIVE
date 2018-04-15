@@ -19,11 +19,13 @@
         <div class="row">
 
             <div class="span9">
-                <h3>Paniers concernant cette commande :</h3>
-                <div th:each="ligneDeCommande : ${lstLigneDeCommande}" class="span6">
+                <h3 th:text="'Paniers concernant la séance du '+${seance}">Paniers concernant cette séance : </h3>
+                <div th:each="ligneDeCommande : ${listPanierParSeance}" class="span6">
                     <h4 th:text="'Format du panier: '+${ligneDeCommande.typePanier}">Allo</h4>
 
                     <div class="control-group">
+                        <label class="control-label"><span th:text="${ligneDeCommande.nomUtilisateur}">Nom</span></label>
+                        <label class="control-label"><span th:text="${ligneDeCommande.prenomUtilisateur}">Prenom</span></label>
                         <label class="control-label"><span th:if="${ligneDeCommande.date}==null">Pas de date sélectionnée : <a th:href="'choixDate?idlignedecommande='+${ligneDeCommande.idLigneDeCommande}"><b>Choisir une date</b></a></span></label>
                         <label class="control-label"><span th:if="${ligneDeCommande.date}!=null" th:text="${ligneDeCommande.date}">Date</span></label>
                         <label th:if="${ligneDeCommande.receptionne}==0" class="control-label"><span style="color: red">Non réceptionné</span></label>

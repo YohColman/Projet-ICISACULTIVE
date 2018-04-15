@@ -2,6 +2,7 @@ package icisacultive.devweb.projet.servlets;
 
 import icisacultive.devweb.projet.entities.SeanceDistribution;
 import icisacultive.devweb.projet.entities.Utilisateur;
+import icisacultive.devweb.projet.managers.LigneDeCommandeLibrary;
 import icisacultive.devweb.projet.managers.SeanceDistributionLibrary;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -31,6 +32,12 @@ public class ChoixDateLDCServlet extends GenericServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        String referer = req.getHeader("Referer");
+        String date = req.getParameter("date");
+        System.out.println(date);
+        Integer idLigneDeCommande = Integer.valueOf(req.getParameter("idlignedecommande"));
+        System.out.println(idLigneDeCommande);
+        LigneDeCommandeLibrary.getInstance().choixDateLigneDeCommande(idLigneDeCommande, date);
+        resp.sendRedirect(referer);
     }
 }

@@ -20,13 +20,11 @@
 
             <div class="span9">
                 <h3>Choix d'une date :</h3>
-                <!-- <div th:each="seance : ${lstSeancesDistrib}">
-                    <p th:text="${seance.dateSeance}"></p>
-                </div> -->
                 <form method="post">
-                    <input type="radio" name="date" value="2018-04-18">2018-04-18<br>
-                    <input type="radio" name="date" value="2018-04-10">2018-04-10<br>
-                    <input type="submit">
+                    <select name="date" id="date">
+                        <option th:each="seance : ${lstSeancesDistrib}" th:value="${seance.dateSeance}" th:text="${seance.dateSeance}"></option>
+                    </select>
+                    <input type="submit" value="Choisir">
                 </form>
                 </div>
             </div>

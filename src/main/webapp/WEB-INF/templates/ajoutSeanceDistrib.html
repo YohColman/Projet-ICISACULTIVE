@@ -41,7 +41,7 @@
         </form>
 
         <h3>Séances existantes :</h3>
-        <ul><li th:each="seance : ${listSeanceDistribution}"><p th:text="${seance.dateSeance}"></p></li></ul>
+        <ul><li th:each="seance : ${listSeanceDistribution}"><a th:href="'listepanierseance?date='+${seance.dateSeance}"> <p th:text="${seance.dateSeance}"></p></a></li></ul>
     </div>
 </div>
 <!-- MainBody End ============================= -->
