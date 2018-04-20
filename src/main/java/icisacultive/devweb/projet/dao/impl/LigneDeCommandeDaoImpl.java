@@ -117,4 +117,17 @@ public class LigneDeCommandeDaoImpl implements LigneDeCommandeDao {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void changerStatutLigneDeCommande(Integer idLigneDeCommande) {
+        String query = "UPDATE lignedecommande SET receptionne=1 WHERE idlignedecommande=?;";
+        try(Connection connection = icisacultive.devweb.projet.dao.impl.DataSourceProvider.getDataSource().getConnection();
+            java.sql.PreparedStatement stmt = connection.prepareStatement(query)){
+
+            stmt.setInt(1, idLigneDeCommande);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

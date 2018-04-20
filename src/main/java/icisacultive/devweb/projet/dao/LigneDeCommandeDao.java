@@ -18,4 +18,6 @@ public interface LigneDeCommandeDao {
     public Integer getNombreDePanierCommande(Integer idCommande);
 
     public void choisirDateLigneDeCommande(Integer idLigneDeCommande, String date);
+
+    public void changerStatutLigneDeCommande(Integer idLigneDeCommande);
 }

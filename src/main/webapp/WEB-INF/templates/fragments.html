@@ -44,9 +44,8 @@
         <a class="brand" href="accueil"><img src="../../themes/images/IcISAcultive.png" alt="icisacultive"/></a>
 
         <ul id="topMenu" class="nav pull-right">
-            <li class=""><a href="contact.html">Contact</a></li>
             <li th:if="${utilisateur}!=null and ${utilisateur.isAdmin()}" class=""><a href="gestionAdmin">Gestion</a></li>
-            <li class=""><a href="profil.html">Mon profil</a></li>
+            <li class=""><a href="monprofil">Mon profil</a></li>
             <li class="">
                 <a th:if="${utilisateur}==null" href="login" style="padding-right:0"><span class="btn btn-large btn-success">Connexion</span></a>
                 <a th:if="${utilisateur}!=null" href="deconnexion" style="padding-right:0"><span class="btn btn-large btn-success">Déconnexion</span></a>

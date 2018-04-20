@@ -28,7 +28,7 @@
                         <label class="control-label"><span th:text="${ligneDeCommande.prenomUtilisateur}">Prenom</span></label>
                         <label class="control-label"><span th:if="${ligneDeCommande.date}==null">Pas de date sélectionnée : <a th:href="'choixDate?idlignedecommande='+${ligneDeCommande.idLigneDeCommande}"><b>Choisir une date</b></a></span></label>
                         <label class="control-label"><span th:if="${ligneDeCommande.date}!=null" th:text="${ligneDeCommande.date}">Date</span></label>
-                        <label th:if="${ligneDeCommande.receptionne}==0" class="control-label"><span style="color: red">Non réceptionné</span></label>
+                        <label th:if="${ligneDeCommande.receptionne}==0" class="control-label"><span style="color: red">Non réceptionné : <a th:href="'confirmerReception?idlignedecommande='+${ligneDeCommande.idLigneDeCommande}"><b>Changer statut</b></a></span></label>
                         <label th:if="${ligneDeCommande.receptionne}==1" class="control-label"><span style="color: green">Réceptionné</span></label>
                     </div>
                 </div>

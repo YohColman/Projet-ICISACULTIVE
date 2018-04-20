@@ -28,5 +28,7 @@ public class LigneDeCommandeLibrary {
 
     public void ajouterLigneDeCommande(Integer idCommande){this.ligneDeCommandeDao.ajouterLigneDeCommande(idCommande);}
 
+    public void changerStatutLigneDeCommande(Integer idLigneDeCommande){this.ligneDeCommandeDao.changerStatutLigneDeCommande(idLigneDeCommande);}
+
     public void choixDateLigneDeCommande(Integer idLigneDeCommande, String date){this.ligneDeCommandeDao.choisirDateLigneDeCommande(idLigneDeCommande, date);}
 }
